@@ -1,0 +1,124 @@
+.showroom-wrap {
+	max-width: 1366px;
+	margin: 0 auto;
+}
+
+
+.menu-products-link {
+	padding-right: 38px;
+	margin-left: -5px;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #6c6c6c;
+	letter-spacing: 1.8px;
+	text-decoration: none;
+	padding-top: 71px;
+	padding-bottom: 20px;
+	margin-bottom: 50px;
+	&:first-child {
+		margin-left: 5px;
+	}
+}
+
+.menu-products-link:hover {
+	color: #212121;
+}
+
+#all, #home, #office {
+	border-bottom:1px solid #6c6c6c;
+}
+
+.menu-products-link-active {
+	color: #212121;
+	background: url(img/active.png) no-repeat scroll bottom;
+	background-position-x: -3px;
+	
+}
+
+.mnogo-wrap {
+	display: inline-block;
+}
+
+.mnogo {
+	display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 1570px;
+    
+    img {
+    	display: inline-block;
+    	width: 370px;
+    	height: 370px;
+    	    	
+    }
+  }
+
+  .refresh {
+  	margin-top: -50px;
+ 	text-align: center;
+ 	margin-bottom: 260px;
+  }
+
+ .relative-showroom {
+ 	position: relative;
+ 	bottom: 1570px;
+ 	margin-bottom: -1570px;
+ }
+
+ .mnogo-product {
+	display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 1570px;
+	width: 370px;
+	text-align: center;
+	height: 234px;
+    outline: #9c9c9c solid 1px;
+    padding-bottom: 68px;
+	padding-top: 62px;
+    background-color: #ffffff;
+    opacity: 0;
+	margin-bottom: 30px;
+	img {
+		width: 12px;
+		height: 20px;
+		margin: 0 auto;
+		margin-top: 14px;
+	}
+	a{
+		display: inline-block;
+		width: 48px;
+		height: 48px;
+		box-shadow: 0 2px 5px 1px rgba(33, 33, 33, 0.35);
+		border-radius: 24px;
+		margin: 0 auto;
+	}
+	h3{
+		color: #212121;
+		font-size: 22px;
+		font-weight: 700;
+		letter-spacing: -1px;
+	}
+	p{
+		color: #6c6c6c;
+		font-size: 14px;
+		font-weight: 400;
+	}
+}
+
+.mnogo-product:hover {
+	opacity: 0.9;
+}
+
+.mnogo-product>a:hover {
+	transform: scale(1.5,1.5);
+	
+}
+
+
+.mnogo-product>a:active {
+	background-color: #4fc9ce;
+}
+

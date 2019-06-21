@@ -20,9 +20,11 @@ body {
 	justify-content: space-between;
 	padding-top: 50px;
 	padding-bottom: 20px;
+	
 }
 
-.product-name h1 {
+.product-name  {
+	h1 {
 	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
 	color: #ffffff;
 	font-size: 60px;
@@ -30,6 +32,7 @@ body {
 	margin: 0;
 	line-height: 44px;
 	padding-bottom: 23px;
+	}
 }
 
 .product-list {
@@ -43,6 +46,7 @@ body {
 }
 .product-list-item {
 	position: relative;
+	
 	&:before {
 		content: "";
 		position: absolute;
@@ -55,6 +59,12 @@ body {
 	}
 }
 
+.product-foto {
+	overflow: hidden;
+	min-width: 200px;
+}
+
+
 .about-prod-wrap {
 	display: flex;
     justify-content: space-between;
@@ -64,28 +74,30 @@ body {
 
 .about-prod {
 	span {
-		color: #445161;
-		font-size: 30px;
-		font-weight: 400;
-		line-height: 36px;
+	color: #445161;
+	font-size: 30px;
+	font-weight: 400;
+	line-height: 36px;
 	}
+	
 	p {
-		width: 650px;
-		color: #333333;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 24px;
+	max-width: 650px;
+	color: #333333;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
 	}
 }
 
 .video-prod {
 	background-color: #445161;
+	max-height: 245px;
+	overflow: hidden;
 }
 
 .pluses-wrap {
 	background-color: #f5f5f5;
 	padding-top: 40px;
-	
 }
 
 .pluses-wrap span {
@@ -124,6 +136,5 @@ body {
 		background-image: url(img/Layer_2.png);
 		background-repeat: no-repeat;
         background-position: center;
-		
 	}
 }

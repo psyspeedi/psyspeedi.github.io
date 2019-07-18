@@ -1,0 +1,3 @@
+[submodule "portfolio_psd_template"]
+	path = portfolio_psd_template
+	url = ../portfolio_psd_template.git

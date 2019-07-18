@@ -1,0 +1,151 @@
+.project 
+  padding: 0 230px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  &-title 
+    margin: 0
+    padding: 81px 0 24px 0
+    font-family: $rsb
+    font-size: 30px
+    color: $active
+  &-txt 
+    margin: 0
+    padding: 0 250px 40px 250px
+    font-family: $ml
+    line-height: 28px
+    font-size: 16px
+    color: $text
+    text-align: center
+    @media (max-width: 1199.98px)
+      padding: 0 100px 40px 100px
+    @media (max-width: 991.98px)
+      padding: 0 0 40px 0
+  &-button 
+    display: flex
+    margin: 0
+    padding: 0 0 40px 0
+    
+    &-item 
+      font-family: $ml
+      line-height: 21px
+      font-size: 14px
+      outline: none
+      cursor: pointer
+      color: $text
+      min-height: 32px
+      border-radius: 3px
+      border: 1px solid #ebebeb
+      background-color: #ffffff
+      margin: 0 5px
+      padding: 0 21px
+      &:hover 
+        background-color: $button
+        color: #fff
+      &:active 
+        background-color: $active
+        color: #fff
+      
+      &-active 
+        background-color: $button
+        color: #fff
+    @media (max-width: 767.98px)
+      flex-wrap: wrap    
+      justify-content: center
+      &-item 
+        margin: 0 5px 10px 5px
+ 
+  @media (max-width: 1679.98px)
+    padding: 0 30px 
+  @media (max-width: 767.98px)
+    padding: 0 10px  
+    
+
+    
+
+.project-content 
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  &-wrap 
+    position: relative
+    margin: 0 15px 30px 15px
+    padding: 0 
+    &-link
+      display: block
+      position: absolute
+      fill: #fff
+      &:nth-child(3)
+        top: 30% 
+        left: 40%
+        display: none
+        &:hover
+          fill: $hover
+        &:active 
+          fill: $active  
+      &:nth-child(4)
+        top: 30% 
+        left: 56%
+        display: none
+        &:hover
+          fill: $hover
+        &:active 
+          fill: $active   
+    &:hover .project-content-img 
+      filter: brightness(30%)
+    &:hover .project-content-wrap-link
+      display: block 
+    &:hover .project-content-item
+      background-color: #362f2d  
+    &:hover .project-content-item-title
+      color: #fff
+    &:hover .project-content-item-txt
+      color: $hover       
+    &:hover .project-content-item:after 
+      border-bottom: 10px solid #362f2d       
+
+  &-img 
+    display: block
+    margin: 0
+    padding: 0 
+    transition: 0.3s
+     
+  &-item 
+    background-color: #fbfaf8
+    position: relative
+    margin: 0
+    padding: 30px 0 27px 28px
+    transition: 0.3s 
+    &:after
+      content: ''
+      position: absolute
+      top: -25px
+      left: 20px
+      border: 15px solid transparent 
+      border-bottom: 10px solid #fbfaf8
+      transition: 0.3s
+    &-title 
+      font-family: $rm
+      color: #c7b299  
+      font-size: 20px
+      margin: 0
+      transition: 0.3s    
+    &-txt 
+      font-family: $ml
+      line-height: 20px 
+      font-size: 14px
+      color: #d1d1d1
+      margin: 0
+      padding: 5px 0 0 0 
+      transition: 0.3s
+ 
+     
+  
+    
+
+
+
+
+  
+

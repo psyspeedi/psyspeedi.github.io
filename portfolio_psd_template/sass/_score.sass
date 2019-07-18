@@ -1,0 +1,60 @@
+.score 
+  padding: 69px 500px 92px 500px
+  background: url('../img/score-bg.png')
+  font-family: $ml
+  display: flex
+  
+  &-wrap 
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    fill: $hover
+        
+    &:before 
+      content: ''
+      position: absolute
+      top: 120%
+      left: auto
+      width: 30px
+      height: 2px
+      background-color: #fff
+  
+  &-item 
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: #fff
+    font-family: $mel
+    font-size: 48px
+    line-height: 36px
+    padding: 30px 0 0 0
+    margin: 0
+    span 
+      display: block
+      text-align: center
+      font-family: $ml
+      font-size: 14px
+      line-height: 20px
+      color: $hover 
+      text-transform: uppercase  
+      padding: 21px 0 0 0
+  @media (max-width: 1919.98px)  
+    padding: 69px 400px 92px 400px
+  @media (max-width: 1679.98px)
+    padding: 69px 200px 92px 200px  
+  @media (max-width: 1199.98px)
+    padding: 69px 100px 92px 100px  
+  @media (max-width: 991.98px)
+    justify-content: center
+    flex-wrap: wrap
+    padding: 69px 30px 42px 30px 
+    &-wrap 
+      margin: 0 10px 50px 10px 
+  @media (max-width: 767.98px)   
+    padding: 50px 10px 73px 10px
+      
+
+
+      
+  

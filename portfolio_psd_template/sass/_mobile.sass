@@ -1,0 +1,65 @@
+.mobile
+  display: flex
+  flex-direction: column
+  padding: 195px 380px 170px 875px
+  background-color: #fbfaf8
+  background-image: url('../img/mobile-bg.png')
+  background-size: 423px 616px
+  background-position: 30% bottom
+  background-repeat: no-repeat
+  &-title 
+    font-family: $rsb
+    font-size: 30px
+    color: $active
+    margin: 0
+    padding: 0 0 30px 0
+    text-align: center
+  &-txt 
+    font-family: $ml
+    font-size: 16px
+    line-height: 28px
+    color: $text
+    margin: 0
+    padding: 0 0 30px 0
+  &-content 
+    list-style-type: none
+    &-item 
+      font-family: $ml
+      font-size: 16px  
+      line-height: 32px
+      color: $text
+      margin: 0
+      padding: 0 0 0 50px
+      position: relative
+      &:before 
+        content: ''
+        position: absolute
+        top: 5px
+        left: -1px
+        width: 21px
+        height: 21px
+        background-image: url('../img/arrow.png')
+        background-position: center center
+        background-repeat: no-repeat
+  @media (max-width: 1919.98px)
+    padding: 195px 250px 170px 700px
+    background-position: 20% bottom
+  @media (max-width: 1679.98px)
+    padding: 195px 230px 170px 520px  
+    background-position: 10% bottom
+  @media (max-width: 1199.98px)
+    padding: 195px 50px 170px 450px 
+    background-position: 10% bottom
+  @media (max-width: 991.98px)
+    padding: 80px 50px 650px 50px 
+    background-position: 40% bottom
+  @media (max-width: 767.98px)  
+    padding: 80px 10px 650px 10px   
+
+
+
+
+
+
+
+

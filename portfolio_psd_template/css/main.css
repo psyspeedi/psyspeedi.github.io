@@ -558,6 +558,12 @@ input[type="checkbox"]:checked ~ .header-nav-buttons {
   background-color: #555555;
 }
 
+@media (max-width: 767.98px) {
+  .header-content {
+    padding: 15px 0 100px 0;
+  }
+}
+
 .pagination {
   width: 100%;
   display: -webkit-box;
@@ -950,7 +956,10 @@ input[type="checkbox"]:checked ~ .header-nav-buttons {
 
 @media (max-width: 575.98px) {
   #img1 {
-    display: none;
+    left: -405px;
+    top: 30px;
+    -webkit-transform: scale(0.35);
+            transform: scale(0.35);
   }
   #img2 {
     left: -385px;
@@ -959,7 +968,10 @@ input[type="checkbox"]:checked ~ .header-nav-buttons {
             transform: scale(0.35);
   }
   #img3 {
-    display: none;
+    left: -365px;
+    top: 30px;
+    -webkit-transform: scale(0.35);
+            transform: scale(0.35);
   }
 }
 

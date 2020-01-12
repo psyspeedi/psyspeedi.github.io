@@ -514,6 +514,7 @@ body > form > div.js > div > div.bar-break-wrap > div:nth-child(4)::before {
   border-radius: 5px;
   margin: 0 auto 20px auto;
   cursor: pointer;
+  font-size: 13px;
 }
 .done:hover {
   -webkit-box-shadow: 0px 0px 10px 0px #435993;
@@ -724,7 +725,7 @@ form {
 
   .info input {
     width: 520px;
-    height: 60px;
+    height: 50px;
   }
   .info-date-div {
     font-size: 20px;
@@ -771,6 +772,10 @@ form {
   #js > div > div.bar-break-wrap > div:nth-child(4) span {
     width: 120px;
     padding: 0;
+  }
+
+  .done {
+    font-size: 16px;
   }
 }
 @media screen and (min-width: 1024px) {

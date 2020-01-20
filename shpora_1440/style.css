@@ -332,6 +332,7 @@
 
   .menuFixed {
     left: calc(50% - 576px);
+    box-shadow: none;
   }
   .menuFixed:before {
     position: absolute;
@@ -342,6 +343,7 @@
     width: 300vw;
     background: #fff;
     z-index: 5;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   }
 }
 .first-deal {
@@ -1771,7 +1773,6 @@
   box-shadow: 0px 4px 20px rgba(12, 169, 239, 0.3);
   color: #fff;
 }
-
 @media screen and (min-width: 375px) {
   .map-clients__map {
     width: 343px;
@@ -2338,6 +2339,16 @@
   }
 }
 @media screen and (min-width: 1024px) {
+  .guide-video--wrap {
+    position: relative;
+  }
+  .guide-video--wrap video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 976px;
+  }
+
   .guide__info {
     margin: 36px 0 0 24px;
   }
@@ -2365,7 +2376,6 @@
     width: 100%;
     margin: 150px 0 400px 0;
     box-shadow: 0px 30px 100px rgba(0, 0, 0, 0.1);
-    position: relative;
   }
   .guide-video video {
     display: block;
@@ -2409,6 +2419,10 @@
   .dot-active {
     background-color: #0CA9EF;
     border-color: #0CA9EF;
+  }
+
+  .videoHidden {
+    display: none;
   }
 }
 @media screen and (min-width: 1440px) {

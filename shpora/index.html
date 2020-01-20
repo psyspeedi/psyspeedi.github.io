@@ -359,7 +359,7 @@
                                 <div class="guide" id="guide">
                                     <h3 class="guide--title" v-html="section.guide.title"></h3>
                                     <p class="guide--text"  v-html="section.guide.text"></p>
-                                     <div class="guide__info">
+                                    <div class="guide__info">
                                          <div class="guide__info--title-content">
                                              <img :src="section.guide.info.img" alt="img">
                                              <h4 class="guide__info--title" v-if="clientWidth < 375" v-html="section.guide.info.title__320"></h4>
@@ -412,10 +412,11 @@
                                             <div class="guide-dot" :id=`dot${n-1}` v-for="n in section.guide.slider.length"></div>
                                         </div>
                                         <div class="guide-video">
-                                            <video id="guideVideo" muted preload loop>
-                                                <source v-if="activeGuideSlide" :src="section.guide.slider[activeGuideSlide].video" type="video/mp4"/>
-                                                <source v-else :src="section.guide.slider[0].video" type="video/mp4"/>
-                                            </video>
+<!--                                            <video class="video" muted preload loop>-->
+<!--                                                <source v-if="activeGuideSlide" :src="section.guide.slider[activeGuideSlide].video" type="video/mp4"/>-->
+<!--                                                <source v-else :src="section.guide.slider[0].video" type="video/mp4"/>-->
+<!--                                            </video>-->
+                                            <video class="video" :id=`videoGuide${index}` :class="{ videoHidden : index != activeGuideSlide && playVideo }" :autoplay="index != 0" :src="card.video" v-show="activeGuideSlide == index" preload muted loop v-for="(card, index) in section.guide.slider"></video>
                                         </div>
                                         <div class="guide-scroll">
                                             <template v-for="(slider, index) in section.guide.slider" :key="index">
@@ -433,7 +434,6 @@
                                                 </div>
                                             </template>
                                         </div>
-
                                     </div>
 
                                 </div>
@@ -469,7 +469,6 @@
                                 <div class="footer">
                                     &#169; 2011-2020 Workle
                                 </div>
-
 
                                 <transition name="fade" mode="out-in">
                                     <section id="cold" v-if="popupSearch.coldNew.opened" :class="{ sectionVisible : popupSearch.coldNew.opened }" :key="65398" class="popup-search">

@@ -1155,7 +1155,8 @@ new Vue({
         },
         scrollHeight: null,
         clientWidth: null,
-        activeGuideSlide: null
+        activeGuideSlide: 0,
+        playVideo: false
     },
     methods: {
         toggleNowCard500() {
@@ -1312,7 +1313,7 @@ new Vue({
 
                 // меню, заголовок, текст, картинка, кнопка
                 tween
-                    .staggerFromTo('.first-section__menu div', 0.2, { opacity: 0, y: -50 }, { opacity: 1, y: 0 }, 0.15)
+                    .staggerFromTo('.first-section__menu div', 0.5, { opacity: 0, y: -150 }, { opacity: 1, y: 0 }, 0.15)
                     .fromTo('.first-section__img', 0.5, { x: 2000,  opacity: 0 }, { x: 0, opacity: 1 })
                     .fromTo('.first-section__title', 0.5, {  y: -300, opacity: 0 }, { y: 0, opacity: 1 })
                     .fromTo('.first-section__text', 0.5, {  x: -300, opacity: 0 }, { x: 0, opacity: 1 })
@@ -1398,50 +1399,27 @@ new Vue({
 
                 })
                     .setTween(tweenGuide)
-                    // .addIndicators()
+                    .addIndicators()
                     .setPin('.guide__1024')
                     .addTo(controller);
 
                 const cards = document.querySelectorAll('.guide-carousel__card');
-                const video = document.getElementById('guideVideo');
-
+                const dots = document.querySelectorAll('.guide-dot');
 
                 window.addEventListener('scroll', () => {
-                    const dots = document.querySelectorAll('.guide-dot');
                     cards.forEach((card, index) => {
                         if(card.getBoundingClientRect().top > 100 && card.getBoundingClientRect().top < 550) {
+                            this.activeGuideSlide  = index;
+                            this.playVideo = true;
+                            document.getElementById(`videoGuide0`).play();
                             dots.forEach((dot, dotindex)=> {
-                                dot.classList.remove('dot-active')
+                                dot.classList.remove('dot-active');
                                 if(index == dotindex) {
                                     document.getElementById(`dot${index}`).classList.add('dot-active')
                                 }
-
                             })
-                            video.play();
-                            // if(this.activeGuideSlide != index ) {
-                                this.activeGuideSlide  = index;
-                                video.pause();
-                                video.currentTime = 0;
-                                video.load();
-                                video.play();
-
-                            // }
                         }
                     })
-
-                    if(document.querySelector('#faq').getBoundingClientRect().top > 100 && document.querySelector('#faq').getBoundingClientRect().top < 750) {
-                        video.autoplay = false;
-                        video.pause();
-                        video.currentTime = 0;
-                        this.activeGuideSlide = section.guide.slider[section.guide.slider.length - 1].video;
-                        video.load();
-                    } else if (document.querySelector('.guide__info').getBoundingClientRect().top > 100 && document.querySelector('.guide__info').getBoundingClientRect().top < 750) {
-                        video.autoplay = false;
-                        video.pause();
-                        video.currentTime = 0;
-                        this.activeGuideSlide = 0;
-                        // video.load();
-                    }
 
                 })
 

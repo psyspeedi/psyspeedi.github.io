@@ -344,6 +344,7 @@ new Vue({
                 text2: 'Посмотрите, сколько в среднем получают по итогам месяца пользователи сайта.',
                 title2: 'Вы узнали, с чего лучше начать, чтобы заработать первые деньги на сайте',
                 text3: 'Если вам нужны дополнительные знания, пройдите бесплатную программу обучение Workle-старт. По ее итогам на ваш счет будет начислено до 10 000 ₽',
+                text3__768: `Если вам нужны дополнительные знания, пройдите бесплатную программу<br>обучение Workle-старт. По ее итогам на ваш счет будет<br>начислено до 10 000 ₽`,
                 link: '',
                 popupOpened: false,
                 card: [
@@ -1156,16 +1157,27 @@ new Vue({
         scrollHeight: null,
         clientWidth: null,
         activeGuideSlide: 0,
-        playVideo: false
+        playVideo: false,
+        nowTransitionEnd: false,
+        mapClientOpen: false
     },
     methods: {
+        transitionComplete() {
+            this.nowTransitionEnd = true;
+        },
         toggleNowCard500() {
-            this.section.now.card1000Open = false;
-            return this.section.now.card500Open = !this.section.now.card500Open
+            if(!this.section.now.card500Open) {
+                this.nowTransitionEnd = false;
+                this.section.now.card1000Open = false;
+                return this.section.now.card500Open = true;
+            }
         },
         toggleNowCard1000() {
-            this.section.now.card500Open = false;
-            return this.section.now.card1000Open = !this.section.now.card1000Open
+            if(!this.section.now.card1000Open) {
+                this.nowTransitionEnd = false;
+                this.section.now.card500Open = false;
+                return this.section.now.card1000Open = true;
+            }
         },
         scrollToId(id) {
             document.querySelector('body').style.overflow = 'auto';
@@ -1275,23 +1287,9 @@ new Vue({
             this.section.firstSection.menuVisible = true;
         },
     },
-    computed: {
-        card500Opened() {
-            return this.section.now.card500Open
-        },
-        card1000Opened() {
-            return this.section.now.card1000Open
-        },
-        popupStoryActive() {
-            this.popupSearch.hot.menu.forEach(menu => {
-                menu.content.forEach(content => {
-                    if(content.opened)
-                        return true
-                })
-            })
-        },
-    },
     mounted() {
+        this.scrollHeight = window.pageYOffset;
+
         window.addEventListener('scroll', () => {
             this.scrollHeight = window.pageYOffset;
         });
@@ -1300,11 +1298,23 @@ new Vue({
         });
         window.addEventListener('DOMContentLoaded', () => {
             this.clientWidth = window.innerWidth;
+            const storyCardTitle = document.querySelectorAll('.story-carousel__card--title');
+            const storyCardText = document.querySelectorAll('.story-carousel__card--text')
+            storyCardTitle.forEach((itemTitle, indexTitle) => {
+                if(itemTitle.clientHeight > 50) {
+                    storyCardText.forEach((itemText, indexText) => {
+                        if(indexTitle == indexText) {
+                            let height = itemText.clientHeight - itemTitle.clientHeight / 2;
+                            itemText.style.height = `${height}px`;
+                            itemText.style.overflow = 'hidden';
+                            itemText.classList.add('textHidden')
+                        }
+                    })
+                }
+            })
         });
 
-
         // animation GSAP
-
         window.addEventListener('load', ()=> {
             const tween = gsap.timeline();
             const controller = new ScrollMagic.Controller();
@@ -1384,7 +1394,6 @@ new Vue({
 
                 // гайд
 
-                // const guideVisibleWidth = document.querySelector('.guide-scroll').clientHeight;
                 const guideScrollHeight = document.querySelector('.guide-scroll').clientHeight;
 
                 const tweenGuide =  new TimelineMax()
@@ -1399,7 +1408,7 @@ new Vue({
 
                 })
                     .setTween(tweenGuide)
-                    .addIndicators()
+                    // .addIndicators()
                     .setPin('.guide__1024')
                     .addTo(controller);
 
@@ -1412,6 +1421,7 @@ new Vue({
                             this.activeGuideSlide  = index;
                             this.playVideo = true;
                             document.getElementById(`videoGuide0`).play();
+                            document.getElementById(`videoGuide${this.section.guide.slider.length - 1}`).play();
                             dots.forEach((dot, dotindex)=> {
                                 dot.classList.remove('dot-active');
                                 if(index == dotindex) {
@@ -1419,7 +1429,17 @@ new Vue({
                                 }
                             })
                         }
-                    })
+                    });
+
+                    if(document.getElementById('faq').getBoundingClientRect().top > 100 && document.getElementById('faq').getBoundingClientRect().top < 550) {
+                        this.activeGuideSlide = this.section.guide.slider.length - 1;
+                        document.getElementById(`videoGuide${this.section.guide.slider.length - 1}`).currentTime = 0;
+                        document.getElementById(`videoGuide${this.section.guide.slider.length - 1}`).pause();
+                    } else if(document.querySelector('.guide--title').getBoundingClientRect().top > 100 && document.querySelector('.guide--title').getBoundingClientRect().top < 550) {
+                        this.activeGuideSlide = 0;
+                        document.getElementById(`videoGuide0`).currentTime = 0;
+                        document.getElementById(`videoGuide0`).pause();
+                    }
 
                 })
 

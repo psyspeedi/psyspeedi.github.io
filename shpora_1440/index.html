@@ -159,101 +159,105 @@
 
                                     </div>
                                 </div>
-                                <div class="now">
-                                    <h3 class="now__title" v-html="section.now.title"></h3>
-                                    <div class="now__button" id="500" @click="toggleNowCard500" :class="{ active : section.now.card500Open  }">150 - 500 ₽</div>
-                                    <div class="now__button" @click="toggleNowCard1000" id="1000" :class="{ active : section.now.card1000Open  }">1 000 - 2 000 ₽</div>
-                                    <transition :duration="600" name="fade" mode="out-in">
-                                        <div class="card__500" v-if="section.now.card500Open && clientWidth < 768" key="12412314123">
-                                            <div class="now__card-closed" :class="{ opened : card.cardOpened.opened }" v-for="(card, index) in section.now.cardClosed500" :key="index">
-                                                <div class="now__card-closed--wrap" @click="card.cardOpened.opened = true">
-                                                    <img :src="card.img" alt="img">
-                                                    <div class="now__card-closed-content">
-                                                        <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                        <p class="now__card-closed--text" v-html="card.text"></p>
-                                                    </div>
-                                                </div>
-                                                <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
-                                                    <span class="now__card-closed__opened--close"  @click="card.cardOpened.opened = false"></span>
-                                                    <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                    <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                    <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                    <ul class="now__card-closed__opened--list">
-                                                        <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
-                                                    </ul>
-                                                    <a class="now__card-closed__opened--button" src="">Подробнее</a>
-                                                </div>
-                                            </div>
+
+                                    <div class="now" @transitionend="transitionComplete" :class="{ nowOpen__500 :  section.now.card500Open, nowOpen__1000 :  section.now.card1000Open }">
+                                        <div class="now-content-wrap">
+                                            <h3 class="now__title" v-html="section.now.title"></h3>
+                                            <div class="now__button" id="button500" @click="toggleNowCard500" :class="{ active : section.now.card500Open }">150 - 500 ₽</div>
+                                            <div class="now__button" @click="toggleNowCard1000" id="button1000" :class="{ active : section.now.card1000Open }">1 000 - 2 000 ₽</div>
                                         </div>
-                                        <div class="card__500__2" v-else-if="section.now.card500Open && clientWidth >= 768" key="12412314123">
-                                            <div class="now__card-closed"
-                                                 :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible500 }"
-                                                 v-for="(card, index) in section.now.cardClosed500"
-                                                 :key="index"
-                                            >
-                                                        <div class="now__card-closed--wrap" @click="anyCard500Opened(card, index)">
-                                                            <img :src="card.img" alt="img">
-                                                            <div class="now__card-closed-content">
-                                                                <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                                <p class="now__card-closed--text" v-html="card.text"></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
-                                                            <span class="now__card-closed__opened--close"  @click="anyCard500Closed(card, index)"></span>
-                                                            <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                            <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                            <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                            <ul class="now__card-closed__opened--list">
-                                                                <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
-                                                            </ul>
-                                                            <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                        <transition :duration="600" name="fade" mode="out-in">
+                                            <div class="card__500" v-if="section.now.card500Open && clientWidth < 768 && nowTransitionEnd" key="12412314123">
+                                                <div class="now__card-closed" :class="{ opened : card.cardOpened.opened }" v-for="(card, index) in section.now.cardClosed500" :key="index">
+                                                    <div class="now__card-closed--wrap" @click="card.cardOpened.opened = true">
+                                                        <img :src="card.img" alt="img">
+                                                        <div class="now__card-closed-content">
+                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                            <p class="now__card-closed--text" v-html="card.text"></p>
                                                         </div>
                                                     </div>
-                                        </div>
-                                        <div class="card__1000" v-else-if="section.now.card1000Open && clientWidth < 768" key="237797645">
-                                            <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
-                                                <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
-                                                    <img :src="card.img" alt="img">
-                                                    <div class="now__card-closed-content">
-                                                        <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                        <p class="now__card-closed--text" v-html="card.text"></p>
+                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
+                                                        <span class="now__card-closed__opened--close"  @click="card.cardOpened.opened = false"></span>
+                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                        <ul class="now__card-closed__opened--list">
+                                                            <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
+                                                        </ul>
+                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
                                                     </div>
                                                 </div>
-                                                <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
-                                                    <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
-                                                    <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                    <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                    <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                    <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
-                                                        <li v-html="list.text"></li>
-                                                    </ul>
-                                                    <a class="now__card-closed__opened--button" src="">Подробнее</a>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card__1000__2" v-else-if="section.now.card1000Open && clientWidth >= 768" key="237797645">
-                                            <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
-                                                <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
-                                                    <img :src="card.img" alt="img">
-                                                    <div class="now__card-closed-content">
-                                                        <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                        <p class="now__card-closed--text" v-html="card.text"></p>
+                                            <div class="card__500__2" v-else-if="section.now.card500Open && clientWidth >= 768 && nowTransitionEnd" key="1241235414123">
+                                                <div class="now__card-closed"
+                                                     :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible500 }"
+                                                     v-for="(card, index) in section.now.cardClosed500"
+                                                     :key="index"
+                                                >
+                                                    <div class="now__card-closed--wrap" @click="anyCard500Opened(card, index)">
+                                                        <img :src="card.img" alt="img">
+                                                        <div class="now__card-closed-content">
+                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                            <p class="now__card-closed--text" v-html="card.text"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
+                                                        <span class="now__card-closed__opened--close"  @click="anyCard500Closed(card, index)"></span>
+                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                        <ul class="now__card-closed__opened--list">
+                                                            <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
+                                                        </ul>
+                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
                                                     </div>
                                                 </div>
-                                                <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
-                                                    <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
-                                                    <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                    <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                    <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                    <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
-                                                        <li v-html="list.text"></li>
-                                                    </ul>
-                                                    <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                            </div>
+                                            <div class="card__1000" v-else-if="section.now.card1000Open && clientWidth < 768 && nowTransitionEnd" key="237797645">
+                                                <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
+                                                    <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
+                                                        <img :src="card.img" alt="img">
+                                                        <div class="now__card-closed-content">
+                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                            <p class="now__card-closed--text" v-html="card.text"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
+                                                        <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
+                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                        <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
+                                                            <li v-html="list.text"></li>
+                                                        </ul>
+                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </transition>
-                                </div>
+                                            <div class="card__1000__2" v-else-if="section.now.card1000Open && clientWidth >= 768 && nowTransitionEnd" key="23779784325645">
+                                                <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
+                                                    <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
+                                                        <img :src="card.img" alt="img">
+                                                        <div class="now__card-closed-content">
+                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                            <p class="now__card-closed--text" v-html="card.text"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
+                                                        <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
+                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                        <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
+                                                            <li v-html="list.text"></li>
+                                                        </ul>
+                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </transition>
+                                    </div>
+
                                 <div class="quick-entry">
                                     <h3 class="quick-entry--title1" v-html="section.quickEntry.title1"></h3>
                                     <div class="quick-entry__card" v-for="card in section.quickEntry.card">
@@ -283,7 +287,8 @@
                                         </div>
                                     </transition>
                                     <h3 class="quick-entry--title2" v-if="clientWidth < 1024" v-html="section.quickEntry.title2"></h3>
-                                    <p class="quick-entry--text3" v-if="clientWidth < 1024"  v-html="section.quickEntry.text3"></p>
+                                    <p class="quick-entry--text3" v-if="clientWidth == 768" v-html="section.quickEntry.text3__768"></p>
+                                    <p class="quick-entry--text3" v-else-if="clientWidth < 1024"  v-html="section.quickEntry.text3"></p>
                                     <a :src="section.quickEntry.link" v-if="clientWidth < 1024"  class="quick-entry--button">Пройти обучение</a>
                                     <div class="quick-entry--title2-container" v-else>
                                         <h3 class="quick-entry--title2" v-html="section.quickEntry.title2"></h3>
@@ -297,7 +302,30 @@
                                     <p class="map-clients--text" v-html="section.mapClients.text"></p>
                                     <div class="map-clients__map">
                                         <div class="map-clients__map-top">
-                                            <div class="map-clients__map--clients">Клиенты</div>
+                                            <div class="map-clients__map--clients" :class="{ mapClientActive : mapClientOpen }" @click="mapClientOpen = !mapClientOpen">
+                                                Клиенты
+                                                <div class="map-clients__map--clients-menu">
+                                                    <transition name="mapAnim" :key="99898989">
+                                                        <a href="" class="map-clients-play" v-if="mapClientOpen">
+                                                            <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M11.9999 6.26795C13.3333 7.03775 13.3333 8.96225 11.9999 9.73205L2.99994 14.9282C1.66661 15.698 -6.10352e-05 14.7358 -6.10352e-05 13.1962V2.80385C-6.10352e-05 1.26425 1.66661 0.301996 2.99994 1.0718L11.9999 6.26795Z" fill="#333333"/>
+                                                                <path d="M11.9999 6.26795C13.3333 7.03775 13.3333 8.96225 11.9999 9.73205L2.99994 14.9282C1.66661 15.698 -6.10352e-05 14.7358 -6.10352e-05 13.1962V2.80385C-6.10352e-05 1.26425 1.66661 0.301996 2.99994 1.0718L11.9999 6.26795Z" fill="white"/>
+                                                            </svg>
+                                                        </a>
+                                                    </transition>
+                                                    <transition name="mapAnim" :key="998989546589">
+                                                        <a href="" class="map-clients-text" v-if="mapClientOpen">
+                                                            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M0.999939 1C13.8202 1 18.3417 1 18.9999 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M0.999939 7C13.8202 7 18.3417 7 18.9999 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M0.999939 13C10.9712 13 14.488 13 14.9999 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </a>
+                                                    </transition>
+                                                </div>
+
+                                            </div>
+
                                         </div>
                                         <div class="map-clients__map-down">
                                             <div class="map-clients__map--cold" @click="openPopupCold">Холодный поиск</div>
@@ -470,7 +498,7 @@
                                     &#169; 2011-2020 Workle
                                 </div>
 
-                                <transition name="fade" mode="out-in">
+                                <transition name="popup-video" mode="out-in">
                                     <section id="cold" v-if="popupSearch.coldNew.opened" :class="{ sectionVisible : popupSearch.coldNew.opened }" :key="65398" class="popup-search">
                                         <i class="close" @click="closePopupCold"></i>
 
@@ -579,7 +607,7 @@
                                     </section>
                                 </transition>
 
-                                <transition name="fade" mode="out-in">
+                                <transition name="popup-video" mode="out-in">
                                     <section id="hot" :class="{ sectionVisible : popupSearch.hot.opened }" v-if="popupSearch.hot.opened" :key="6539878" class="popup-search">
                                         <i class="close" @click="closePopupHot"></i>
 

@@ -1421,6 +1421,11 @@
   text-decoration: none;
   justify-content: center;
   margin: 0 0 90px 0;
+  transition: 0.3s;
+}
+.quick-entry--button:hover {
+  color: #FFFFFF;
+  box-shadow: 0px 4px 20px rgba(12, 169, 239, 0.3);
 }
 .quick-entry__card {
   width: 288px;
@@ -1465,6 +1470,7 @@
   line-height: 21px;
   letter-spacing: 0.02em;
   cursor: pointer;
+  transition: all 0.3s;
 }
 .quick-entry__card--button:hover {
   color: #FFFFFF;

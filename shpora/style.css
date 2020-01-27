@@ -405,11 +405,19 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   }
 
-  #shpargalka > div.first-section > div.first-section__menu > div:nth-child(1):after,
-#shpargalka > div.first-section > div.first-section__menu > div:nth-child(2):after,
-#shpargalka > div.first-section > div.first-section__menu > div:nth-child(3):after {
+  #shpargalka > div.first-section > div.first-section__menu > div:nth-child(1):after {
     width: 80px;
-    right: -128px;
+    right: -120px;
+  }
+
+  #shpargalka > div.first-section > div.first-section__menu > div:nth-child(2):after {
+    right: -124px;
+    width: 80px;
+  }
+
+  #shpargalka > div.first-section > div.first-section__menu > div:nth-child(3):after {
+    width: 80px;
+    right: -122px;
   }
 
   #svgdeal {
@@ -3445,6 +3453,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .popup-search__content-review--switch span {
+    font-size: 18px;
+  }
+
   .close {
     top: -35px;
     right: -25px;

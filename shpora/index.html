@@ -34,105 +34,79 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
-    <body >
+    <body>
         <div class="b-public">
             <div class="b-public__wrap">
                 <div class="b-public_content">
                     <div class="b-public__section b-public_content__publications">
                         <div class="b-public__inner">
                             <!-- CONTENT-START -->
-                            <div id="shpargalka">
+                            <div id="shpargalka" :class="{ hidden : darken }">
                                 <transition name="darken">
                                     <div class="darken" v-if="section.quickEntry.popupOpened || popupSearch.coldNew.opened || popupSearch.hot.opened"></div>
                                 </transition>
                                 <div class="first-section" >
                                     <div class="bg_first_1440"></div>
                                     <div class="first-section__menu" v-if="clientWidth < 768" :class="{ menuFixed : scrollHeight > 480 }">
-                                        <span @click="scrollToId('first-deal')">Первая сделка</span>
-                                        <span @click="scrollToId('map-clients')">Карта клиентов</span>
-                                        <span @click="scrollToId('guide')">Гид<br>по&nbsp;сайту</span>
-                                        <span @click="scrollToId('faq')">База знаний</span>
+                                        <span id="mobileMenu0" :class="{ menuActive : isActiveSection('first-deal') }"  @click="scrollToId('first-deal')">Первая сделка</span>
+                                        <span id="mobileMenu1" :class="{ menuActive : isActiveSection('map-clients') }"  @click="scrollToId('map-clients')">Карта клиентов</span>
+                                        <span id="mobileMenu2" :class="{ menuActive : isActiveSection('guide') }"  @click="scrollToId('guide')">Гид<br>по&nbsp;сайту</span>
+                                        <span id="mobileMenu3" :class="{ menuActive : isActiveSection('faq') }"  @click="scrollToId('faq')">База знаний</span>
                                     </div>
                                     <div class="first-section__menu" v-else :class="{ menuFixed : (scrollHeight > 800) && section.firstSection.menuVisible }">
                                         <div @click="scrollToId('first-deal')">
-                                            <div>
+                                            <div :class="{ menuDivActive : isActiveSection('first-deal') }">
                                                 <svg id="svgdeal" width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg" fill="none">
-                                                    <path d="M8 1.25L10.2218 4.94192L14.4196 5.91413L11.595 9.16808L11.9676 13.4609L8 11.78L4.03245 13.4609L4.40501 9.16808L1.58037 5.91413L5.77817 4.94192L8 1.25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path :class="{ svgStrokeActive : isActiveSection('first-deal') }" d="M8 1.25L10.2218 4.94192L14.4196 5.91413L11.595 9.16808L11.9676 13.4609L8 11.78L4.03245 13.4609L4.40501 9.16808L1.58037 5.91413L5.77817 4.94192L8 1.25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </div>
-                                            <span>Первая сделка</span>
+                                            <span :class="{ menuActive : isActiveSection('first-deal') }">Первая сделка</span>
                                         </div>
                                         <div @click="scrollToId('map-clients')">
-                                            <div>
-                                                <svg id="svgclient" width="14" height="15" viewBox="0 0 14 15" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                            <div :class="{ menuDivActive : isActiveSection('map-clients') }">
+                                                <svg id="svgclient"  :class="{ svgFillActive : isActiveSection('map-clients')  }" width="14" height="15" viewBox="0 0 14 15" fill="white" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M9.55 8.58594C8.7332 8.58594 8.34046 9.03125 7 9.03125C5.65954 9.03125 5.26964 8.58594 4.45 8.58594C2.33828 8.58594 0.625 10.2614 0.625 12.3266V13.0391C0.625 13.7766 1.23689 14.375 1.99107 14.375H12.0089C12.7631 14.375 13.375 13.7766 13.375 13.0391V12.3266C13.375 10.2614 11.6617 8.58594 9.55 8.58594ZM12.0089 13.0391H1.99107V12.3266C1.99107 11.0018 3.09531 9.92188 4.45 9.92188C4.86551 9.92188 5.54001 10.3672 7 10.3672C8.47137 10.3672 9.13164 9.92188 9.55 9.92188C10.9047 9.92188 12.0089 11.0018 12.0089 12.3266V13.0391ZM7 8.14062C9.26256 8.14062 11.0982 6.34546 11.0982 4.13281C11.0982 1.92017 9.26256 0.125 7 0.125C4.73744 0.125 2.90179 1.92017 2.90179 4.13281C2.90179 6.34546 4.73744 8.14062 7 8.14062ZM7 1.46094C8.50552 1.46094 9.73214 2.6605 9.73214 4.13281C9.73214 5.60513 8.50552 6.80469 7 6.80469C5.49448 6.80469 4.26786 5.60513 4.26786 4.13281C4.26786 2.6605 5.49448 1.46094 7 1.46094Z"/>
                                                 </svg>
                                             </div>
-                                            <span>Карта клиентов</span>
+                                            <span :class="{ menuActive : isActiveSection('map-clients') }">Карта клиентов</span>
                                         </div>
                                         <div @click="scrollToId('guide')">
-                                            <div>
-                                                <svg id="svgguide" width="4" height="15" viewBox="0 0 4 15" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                            <div :class="{ menuDivActive : isActiveSection('guide') }">
+                                                <svg id="svgguide" :class="{ svgFillActive : isActiveSection('guide')  }" width="4" height="15" viewBox="0 0 4 15" xmlns="http://www.w3.org/2000/svg" fill="white">
                                                     <path d="M2.125 0.25C1.43574 0.25 0.875 0.811 0.875 1.50056C0.875 2.1895 1.43574 2.75 2.125 2.75C2.81426 2.75 3.375 2.1895 3.375 1.50056C3.375 0.811 2.81426 0.25 2.125 0.25Z"/>
-                                                    <path d="M2 6.24997V13.75" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path :class="{ svgStrokeActive : isActiveSection('guide') }" d="M2 6.24997V13.75" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </div>
-                                            <span>Гид по&nbsp;сайту</span>
+                                            <span :class="{ menuActive : isActiveSection('guide') }">Гид по&nbsp;сайту</span>
                                         </div>
                                         <div @click="scrollToId('faq')">
-                                            <div>
-                                                <svg id="svgfaq" width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                            <div :class="{ menuDivActive : isActiveSection('faq') }">
+                                                <svg id="svgfaq"  :class="{ svgFillActive : isActiveSection('faq')  }" width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg" fill="white">
                                                     <path d="M4.00027 13.75C4.5651 13.75 5.02299 13.2966 5.02299 12.7374C5.02299 12.1782 4.5651 11.7249 4.00027 11.7249C3.43543 11.7249 2.97754 12.1782 2.97754 12.7374C2.97754 13.2966 3.43543 13.75 4.00027 13.75Z"/>
                                                     <path d="M4 0.25C1.93225 0.25 0.25 1.98042 0.25 4.10738C0.25 4.63999 0.669719 5.07173 1.1875 5.07173C1.70528 5.07173 2.125 4.63999 2.125 4.10738C2.125 3.0439 2.96613 2.17869 4 2.17869C5.03387 2.17869 5.875 3.0439 5.875 4.10738C5.875 5.17086 5.03387 6.03607 4 6.03607C3.48222 6.03607 3.0625 6.46781 3.0625 7.00042V9.41128C3.0625 9.94389 3.48222 10.3756 4 10.3756C4.51778 10.3756 4.9375 9.94389 4.9375 9.41128V7.84273C6.55309 7.41345 7.75 5.9015 7.75 4.10738C7.75 1.98042 6.06775 0.25 4 0.25Z"/>
                                                 </svg>
                                             </div>
-                                            <span>База знаний</span>
+                                            <span :class="{ menuActive : isActiveSection('faq') }">База знаний</span>
                                          </div>
                                     </div>
                                     <h3 class="first-section__title" v-if="clientWidth < 480" v-html="section.firstSection.title"></h3>
                                     <h3 class="first-section__title" v-else-if="clientWidth >= 480 && clientWidth < 1024">Шпаргалка<br>для новых пользователей</h3>
                                     <h3 class="first-section__title" v-else>Шпаргалка для<br>новых пользователей</h3>
                                     <p class="first-section__text" v-html="section.firstSection.text"></p>
-                                    <a class="first-section__button" :src="section.firstSection.button.src" v-html="section.firstSection.button.text"></a>
+                                    <button class="first-section__button" @click="scrollToId('first-deal')" v-html="section.firstSection.button.text"></button>
                                     <div class="first-section__img">
                                         <img src="https://workle.ru/storage/e8/a0/9a/80/8c/ec/57/89/4826-df5a2f-cf9a2b.gif" alt="">
                                     </div>
                                 </div>
-                                <div class="first-deal" id="first-deal">
-                                    <div class="bg_deal_1440"></div>
-                                    <h3 class="first-deal__title" v-html="section.firstDeal.title"></h3>
-                                    <img class="first-deal__img" v-if="clientWidth < 768" alt="img" src="https://workle.ru/storage/7e/d2/1d/8f/32/58/7e/aa/478b-66ad31-b75bfd.png">
-                                    <img v-else src="https://www.workle.ru/storage/89/be/b7/5c/1d/ea/22/a9/4d73-3d2240-ccc78d.gif" alt="gif" class="first-deal__img">
-                                    <p class="first-deal__text" v-html="section.firstDeal.text"></p>
-                                </div>
-                                <div v-if="clientWidth < 1024" class="three-steps">
-                                    <p class="three-steps__text" v-html="section.threeSteps.text"></p>
-                                    <h3 class="three-steps__title" v-html="section.threeSteps.title">></h3>
-                                    <div class="three-steps__card" :id=`card${index+1}` v-for="(card, index) in section.threeSteps.card">
-                                        <img class="three-steps__card--img" :src="card.img" alt="img">
-                                        <h4 class="three-steps__card--title" v-html="card.title"></h4>
-                                        <p class="three-steps__card--text" v-if="clientWidth < 375 && card.text2" v-html="card.text2"></p>
-                                        <p class="three-steps__card--text" v-else v-html="card.text"></p>
+                                <div id="first-deal">
+                                    <div class="first-deal">
+                                        <div class="bg_deal_1440"></div>
+                                        <h3 class="first-deal__title" v-html="section.firstDeal.title"></h3>
+                                        <img class="first-deal__img" v-if="clientWidth < 768" alt="img" src="https://workle.ru/storage/7e/d2/1d/8f/32/58/7e/aa/478b-66ad31-b75bfd.png">
+                                        <img v-else src="https://www.workle.ru/storage/89/be/b7/5c/1d/ea/22/a9/4d73-3d2240-ccc78d.gif" alt="gif" class="first-deal__img">
+                                        <p class="first-deal__text" v-html="section.firstDeal.text"></p>
                                     </div>
-                                </div>
-                                <div v-if="clientWidth < 1024" class="new-user">
-                                    <p class="new-user__title" v-html="section.newUser.title" v-if="clientWidth < 768"></p>
-                                    <div class="new-user__title" v-else>Чаще всего новые пользователи<br><strong>совершают первые сделки на себя или своих близких</strong></div>
-                                    <p class="new-user__text" v-html="section.newUser.text"></p>
-                                    <div class="new-user__card" :id=`cardUser${index+1}` v-for="(card, index) in section.newUser.card">
-                                        <div class="new-user__card--img">
-                                            <img :src="card.img" alt="img">
-                                        </div>
-                                        <h4 class="new-user__card--title" v-html="card.title"></h4>
-                                        <p class="new-user__card--text" v-html="card.text"></p>
-                                    </div>
-                                    <p class="new-user__text2" v-if="clientWidth < 768" v-html="section.newUser.text2"></p>
-                                    <p class="new-user__text2" v-if="clientWidth < 768" v-html="section.newUser.text3"></p>
-                                    <p class="new-user__text2" v-else>Вы можете поступить точно так же, как большинство новичков, и получить первое вознаграждение, не прикладывая никаких усилий. Или выбрать свой путь. Начать работу на сайте можно с любого продукта. </p>
-
-                                </div>
-                                <div class="animation-steps" v-else>
-                                    <div class="three-steps">
+                                    <div v-if="clientWidth < 1024" class="three-steps">
                                         <p class="three-steps__text" v-html="section.threeSteps.text"></p>
                                         <h3 class="three-steps__title" v-html="section.threeSteps.title">></h3>
                                         <div class="three-steps__card" :id=`card${index+1}` v-for="(card, index) in section.threeSteps.card">
@@ -142,7 +116,7 @@
                                             <p class="three-steps__card--text" v-else v-html="card.text"></p>
                                         </div>
                                     </div>
-                                    <div class="new-user">
+                                    <div v-if="clientWidth < 1024" class="new-user">
                                         <p class="new-user__title" v-html="section.newUser.title" v-if="clientWidth < 768"></p>
                                         <div class="new-user__title" v-else>Чаще всего новые пользователи<br><strong>совершают первые сделки на себя или своих близких</strong></div>
                                         <p class="new-user__text" v-html="section.newUser.text"></p>
@@ -158,142 +132,175 @@
                                         <p class="new-user__text2" v-else>Вы можете поступить точно так же, как большинство новичков, и получить первое вознаграждение, не прикладывая никаких усилий. Или выбрать свой путь. Начать работу на сайте можно с любого продукта. </p>
 
                                     </div>
-                                </div>
+                                    <div class="animation-steps" v-else>
+                                        <div class="three-steps">
+                                            <p class="three-steps__text" v-html="section.threeSteps.text"></p>
+                                            <h3 class="three-steps__title" v-html="section.threeSteps.title">></h3>
+                                            <div class="three-steps__card" :id=`card${index+1}` v-for="(card, index) in section.threeSteps.card">
+                                                <img class="three-steps__card--img" :src="card.img" alt="img">
+                                                <h4 class="three-steps__card--title" v-html="card.title"></h4>
+                                                <p class="three-steps__card--text" v-if="clientWidth < 375 && card.text2" v-html="card.text2"></p>
+                                                <p class="three-steps__card--text" v-else v-html="card.text"></p>
+                                            </div>
+                                        </div>
+                                        <div class="new-user">
+                                            <p class="new-user__title" v-html="section.newUser.title" v-if="clientWidth < 768"></p>
+                                            <div class="new-user__title" v-else>Чаще всего новые пользователи<br><strong>совершают первые сделки на себя или своих близких</strong></div>
+                                            <p class="new-user__text" v-html="section.newUser.text"></p>
+                                            <div class="new-user__card" :id=`cardUser${index+1}` v-for="(card, index) in section.newUser.card">
+                                                <div class="new-user__card--img">
+                                                    <img :src="card.img" alt="img">
+                                                </div>
+                                                <h4 class="new-user__card--title" v-html="card.title"></h4>
+                                                <p class="new-user__card--text" v-html="card.text"></p>
+                                            </div>
+                                            <p class="new-user__text2" v-if="clientWidth < 768" v-html="section.newUser.text2"></p>
+                                            <p class="new-user__text2" v-if="clientWidth < 768" v-html="section.newUser.text3"></p>
+                                            <p class="new-user__text2" v-else>Вы можете поступить точно так же, как большинство новичков, и получить первое вознаграждение, не прикладывая никаких усилий. Или выбрать свой путь. Начать работу на сайте можно с любого продукта. </p>
+
+                                        </div>
+                                    </div>
 
                                     <div class="now" @transitionend="transitionComplete" :class="{ nowOpen__500 :  section.now.card500Open, nowOpen__1000 :  section.now.card1000Open }">
-                                        <div class="now-content-wrap">
-                                            <h3 class="now__title" v-html="section.now.title"></h3>
-                                            <div class="now__button" id="button500" @click="toggleNowCard500" :class="{ active : section.now.card500Open }">150 - 500 ₽</div>
-                                            <div class="now__button" @click="toggleNowCard1000" id="button1000" :class="{ active : section.now.card1000Open }">1 000 - 2 000 ₽</div>
+                                            <div class="now-content-wrap">
+                                                <h3 class="now__title" v-html="section.now.title"></h3>
+                                                <div class="now__button" id="button500" @click="toggleNowCard500" :class="{ active : section.now.card500Open }">150 - 500 ₽</div>
+                                                <div class="now__button" @click="toggleNowCard1000" id="button1000" :class="{ active : section.now.card1000Open }">1 000 - 2 000 ₽</div>
+                                            </div>
+                                            <transition :duration="600" name="fade" mode="out-in">
+                                                <div class="card__500" v-if="section.now.card500Open && clientWidth < 768 && nowTransitionEnd" key="12412314123">
+                                                    <div class="now__card-closed" :class="{ opened : card.cardOpened.opened }" v-for="(card, index) in section.now.cardClosed500" :key="index">
+                                                        <div class="now__card-closed--wrap" @click="card.cardOpened.opened = true">
+                                                            <img :src="card.img" alt="img">
+                                                            <div class="now__card-closed-content">
+                                                                <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                                <p class="now__card-closed--text" v-html="card.text"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
+                                                            <span class="now__card-closed__opened--close"  @click="card.cardOpened.opened = false"></span>
+                                                            <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                            <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                            <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                            <ul class="now__card-closed__opened--list">
+                                                                <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
+                                                            </ul>
+                                                            <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card__500__2" v-else-if="section.now.card500Open && clientWidth >= 768 && nowTransitionEnd" key="1241235414123">
+                                                    <div class="now__card-closed"
+                                                         :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible500 }"
+                                                         v-for="(card, index) in section.now.cardClosed500"
+                                                         :key="index"
+                                                    >
+                                                        <div class="now__card-closed--wrap" @click="anyCard500Opened(card, index)">
+                                                            <img :src="card.img" alt="img">
+                                                            <div class="now__card-closed-content">
+                                                                <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                                <p class="now__card-closed--text" v-html="card.text"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
+                                                            <span class="now__card-closed__opened--close"  @click="anyCard500Closed(card, index)"></span>
+                                                            <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                            <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                            <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                            <ul class="now__card-closed__opened--list">
+                                                                <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
+                                                            </ul>
+                                                            <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card__1000" v-else-if="section.now.card1000Open && clientWidth < 768 && nowTransitionEnd" key="237797645">
+                                                    <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
+                                                        <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
+                                                            <img :src="card.img" alt="img">
+                                                            <div class="now__card-closed-content">
+                                                                <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                                <p class="now__card-closed--text" v-html="card.text"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
+                                                            <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
+                                                            <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                            <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                            <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                            <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
+                                                                <li v-html="list.text"></li>
+                                                            </ul>
+                                                            <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card__1000__2" v-else-if="section.now.card1000Open && clientWidth >= 768 && nowTransitionEnd" key="23779784325645">
+                                                    <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
+                                                        <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
+                                                            <img :src="card.img" alt="img">
+                                                            <div class="now__card-closed-content">
+                                                                <h4 class="now__card-closed--title" v-html="card.title"></h4>
+                                                                <p class="now__card-closed--text" v-html="card.text"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
+                                                            <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
+                                                            <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
+                                                            <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
+                                                            <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
+                                                            <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
+                                                                <li v-html="list.text"></li>
+                                                            </ul>
+                                                            <a class="now__card-closed__opened--button" src="">Подробнее</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </transition>
                                         </div>
-                                        <transition :duration="600" name="fade" mode="out-in">
-                                            <div class="card__500" v-if="section.now.card500Open && clientWidth < 768 && nowTransitionEnd" key="12412314123">
-                                                <div class="now__card-closed" :class="{ opened : card.cardOpened.opened }" v-for="(card, index) in section.now.cardClosed500" :key="index">
-                                                    <div class="now__card-closed--wrap" @click="card.cardOpened.opened = true">
-                                                        <img :src="card.img" alt="img">
-                                                        <div class="now__card-closed-content">
-                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                            <p class="now__card-closed--text" v-html="card.text"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
-                                                        <span class="now__card-closed__opened--close"  @click="card.cardOpened.opened = false"></span>
-                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                        <ul class="now__card-closed__opened--list">
-                                                            <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
-                                                        </ul>
-                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
-                                                    </div>
-                                                </div>
+
+                                    <div class="quick-entry">
+                                        <h3 class="quick-entry--title1" v-html="section.quickEntry.title1"></h3>
+                                        <div class="quick-entry__card" v-for="card in section.quickEntry.card">
+                                            <img :src="card.img" class="quick-entry__card--img">
+                                            <p class="quick-entry__card--text1" v-html="card.text1"></p>
+                                            <p class="quick-entry__card--text2" v-html="card.text2"></p>
+                                            <a :src="card.link" class="quick-entry__card--button">Оформить карту</a>
+                                        </div>
+                                        <p class="quick-entry--text1" v-if="clientWidth < 375" v-html="section.quickEntry.text1__320"></p>
+
+                                        <div class="quick-entry--text__1024" v-else>
+                                            <div class="quick-entry--text1">
+                                                <div></div>
+                                                <p v-html="section.quickEntry.text1__1024"></p>
                                             </div>
-                                            <div class="card__500__2" v-else-if="section.now.card500Open && clientWidth >= 768 && nowTransitionEnd" key="1241235414123">
-                                                <div class="now__card-closed"
-                                                     :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible500 }"
-                                                     v-for="(card, index) in section.now.cardClosed500"
-                                                     :key="index"
-                                                >
-                                                    <div class="now__card-closed--wrap" @click="anyCard500Opened(card, index)">
-                                                        <img :src="card.img" alt="img">
-                                                        <div class="now__card-closed-content">
-                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                            <p class="now__card-closed--text" v-html="card.text"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+5465">
-                                                        <span class="now__card-closed__opened--close"  @click="anyCard500Closed(card, index)"></span>
-                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                        <ul class="now__card-closed__opened--list">
-                                                            <li v-for="list in card.cardOpened.list" v-html="list.text"></li>
-                                                        </ul>
-                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
-                                                    </div>
-                                                </div>
+                                            <p class="quick-entry--text2">
+                                                {{ section.quickEntry.text2 }}
+                                                <a href="">Посмотреть</a>
+                                            </p>
+                                        </div>
+
+
+                                        <div class="quick-entry--video-button" @click="openPopupVideo"></div>
+                                        <transition name="popup-video">
+                                            <div class="popup-video" v-if="section.quickEntry.popupOpened && clientWidth < 768" key="5434684531">
+                                                <span class="popup-video--close" @click="closePopupVideo"></span>
+                                                <iframe width="288" height="162" src="https://www.youtube.com/embed/jGt2D8bYkUc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             </div>
-                                            <div class="card__1000" v-else-if="section.now.card1000Open && clientWidth < 768 && nowTransitionEnd" key="237797645">
-                                                <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
-                                                    <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
-                                                        <img :src="card.img" alt="img">
-                                                        <div class="now__card-closed-content">
-                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                            <p class="now__card-closed--text" v-html="card.text"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
-                                                        <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
-                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                        <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
-                                                            <li v-html="list.text"></li>
-                                                        </ul>
-                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card__1000__2" v-else-if="section.now.card1000Open && clientWidth >= 768 && nowTransitionEnd" key="23779784325645">
-                                                <div class="now__card-closed" :class="{ opened : card.cardOpened.opened, cardHidden : section.now.openIndex != index && !section.now.allCardVisible1000 }" v-for="(card, index) in section.now.cardClosed1000" :key="index">
-                                                    <div class="now__card-closed--wrap" @click="anyCard1000Opened(card, index)">
-                                                        <img :src="card.img" alt="img">
-                                                        <div class="now__card-closed-content">
-                                                            <h4 class="now__card-closed--title" v-html="card.title"></h4>
-                                                            <p class="now__card-closed--text" v-html="card.text"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="now__card-closed__opened" v-if="card.cardOpened.opened" :key="index+7899">
-                                                        <span class="now__card-closed__opened--close"  @click="anyCard1000Closed(card, index)"></span>
-                                                        <p class="now__card-closed__opened--text1" v-html="card.cardOpened.text1"></p>
-                                                        <p class="now__card-closed__opened--text2" v-html="card.cardOpened.text2"></p>
-                                                        <p class="now__card-closed__opened--title-list" v-html="card.cardOpened.listTitle"></p>
-                                                        <ul class="now__card-closed__opened--list" v-for="list in card.cardOpened.list">
-                                                            <li v-html="list.text"></li>
-                                                        </ul>
-                                                        <a class="now__card-closed__opened--button" src="">Подробнее</a>
-                                                    </div>
-                                                </div>
+                                            <div class="popup-video" v-else-if="section.quickEntry.popupOpened && clientWidth >= 768" key="5434684531">
+                                                <span class="popup-video--close" @click="closePopupVideo"></span>
+                                                <iframe width="720" height="452" src="https://www.youtube.com/embed/jGt2D8bYkUc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             </div>
                                         </transition>
-                                    </div>
-
-                                <div class="quick-entry">
-                                    <h3 class="quick-entry--title1" v-html="section.quickEntry.title1"></h3>
-                                    <div class="quick-entry__card" v-for="card in section.quickEntry.card">
-                                        <img :src="card.img" class="quick-entry__card--img">
-                                        <p class="quick-entry__card--text1" v-html="card.text1"></p>
-                                        <p class="quick-entry__card--text2" v-html="card.text2"></p>
-                                        <a :src="card.link" class="quick-entry__card--button">Оформить карту</a>
-                                    </div>
-                                    <p class="quick-entry--text1" v-if="clientWidth < 375" v-html="section.quickEntry.text1__320"></p>
-                                    <div class="quick-entry--text1" v-else>
-                                        <div></div>
-                                        <p v-html="section.quickEntry.text1__1024"></p>
-                                    </div>
-                                    <p class="quick-entry--text2">
-                                        {{ section.quickEntry.text2 }}
-                                        <a href="">Посмотреть</a>
-                                    </p>
-                                    <div class="quick-entry--video-button" @click="openPopupVideo"></div>
-                                    <transition name="popup-video">
-                                        <div class="popup-video" v-if="section.quickEntry.popupOpened && clientWidth < 768" key="5434684531">
-                                            <span class="popup-video--close" @click="closePopupVideo"></span>
-                                            <iframe width="288" height="162" src="https://www.youtube.com/embed/jGt2D8bYkUc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <h3 class="quick-entry--title2" v-if="clientWidth < 1024" v-html="section.quickEntry.title2"></h3>
+                                        <p class="quick-entry--text3" v-if="clientWidth == 768" v-html="section.quickEntry.text3__768"></p>
+                                        <p class="quick-entry--text3" v-else-if="clientWidth < 1024"  v-html="section.quickEntry.text3"></p>
+                                        <a :src="section.quickEntry.link" v-if="clientWidth < 1024"  class="quick-entry--button">Пройти обучение</a>
+                                        <div class="quick-entry--title2-container" v-else>
+                                            <h3 class="quick-entry--title2" v-html="section.quickEntry.title2"></h3>
+                                            <p class="quick-entry--text3" v-html="section.quickEntry.text3"></p>
+                                            <a :src="section.quickEntry.link" class="quick-entry--button">Пройти обучение</a>
                                         </div>
-                                        <div class="popup-video" v-else-if="section.quickEntry.popupOpened && clientWidth >= 768" key="5434684531">
-                                            <span class="popup-video--close" @click="closePopupVideo"></span>
-                                            <iframe width="720" height="452" src="https://www.youtube.com/embed/jGt2D8bYkUc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </div>
-                                    </transition>
-                                    <h3 class="quick-entry--title2" v-if="clientWidth < 1024" v-html="section.quickEntry.title2"></h3>
-                                    <p class="quick-entry--text3" v-if="clientWidth == 768" v-html="section.quickEntry.text3__768"></p>
-                                    <p class="quick-entry--text3" v-else-if="clientWidth < 1024"  v-html="section.quickEntry.text3"></p>
-                                    <a :src="section.quickEntry.link" v-if="clientWidth < 1024"  class="quick-entry--button">Пройти обучение</a>
-                                    <div class="quick-entry--title2-container" v-else>
-                                        <h3 class="quick-entry--title2" v-html="section.quickEntry.title2"></h3>
-                                        <p class="quick-entry--text3" v-html="section.quickEntry.text3"></p>
-                                        <a :src="section.quickEntry.link" class="quick-entry--button">Пройти обучение</a>
                                     </div>
                                 </div>
                                 <div class="map-clients" id="map-clients" >
@@ -475,8 +482,8 @@
                                                     0{{ index+1 }}
                                                 </span>
                                             </div>
-                                            <div class="faq__list-content" :class="{ faqOpened : item.open }" @click="item.open = !item.open" :key="index*599">
-                                                <p class="faq__list--questions" :class="{ answerOpened : item.open }" :key="index*236">
+                                            <div class="faq__list-content" :class="{ faqOpened : item.open }" :key="index*599">
+                                                <p class="faq__list--questions" :class="{ answerOpened : item.open }" @click="item.open = !item.open" :key="index*236">
                                                     {{ item.questions }}
                                                     <svg width="12" height="8" viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M6.00254 5.18014L1.51317 0.595303C1.38985 0.469059 1.22498 0.39961 1.04917 0.39961C0.873268 0.39961 0.708488 0.469059 0.584976 0.595303L0.191805 0.997051C0.0680976 1.1231 0 1.29159 0 1.47114C0 1.65069 0.0680976 1.81898 0.191805 1.94513L5.53678 7.40411C5.66068 7.53076 5.82624 7.6001 6.00224 7.59961C6.17902 7.6001 6.34439 7.53086 6.46839 7.40411L11.8082 1.95021C11.9319 1.82406 12 1.65577 12 1.47612C12 1.29657 11.9319 1.12828 11.8082 1.00203L11.415 0.600384C11.1591 0.339028 10.7425 0.339028 10.4867 0.600384L6.00254 5.18014Z"/>

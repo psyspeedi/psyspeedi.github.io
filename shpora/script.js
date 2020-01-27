@@ -15,7 +15,6 @@ new Vue({
                 text: 'Перед вами краткое руководство. Ознакомьтесь с ним и зарабатывайте на Workle уже с первых дней',
                 button: {
                     text: 'Начать',
-                    src: ''
                 }
             },
             firstDeal: {
@@ -308,7 +307,7 @@ new Vue({
                     },
 
                     {
-                        img: 'https://workle.ru/storage/3d/ac/bb/5f/43/52/c5/b5/43a2-79a236-1f5264.png',
+                        img: 'https://workle.ru/storage/cb/22/9a/5f/8b/13/71/a3/4986-5be8bb-1bd02c.png',
                         title: 'Подбор персонала ',
                         text: `<strong>до 3 000 ₽</strong> за успешного кандидата`,
                         cardOpened: {
@@ -448,7 +447,7 @@ new Vue({
                 },
                 slider: [
                     {
-                        img: 'https://workle.ru/storage/f1/32/22/05/30/e0/a2/b9/4cd4-9c2309-bd7eb9.png',
+                        img: 'https://workle.ru/storage/17/67/99/41/b3/41/38/83/4f4e-7e81c9-085c10.png',
                         title: 'Профиль',
                         text1: 'Страница пользователя, где отражаются данные, указанные при регистрации, и личные достижения: уровень карьеры, доход, сделки.',
                         text2: '',
@@ -457,7 +456,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/958233ad-da38-4ec6-8de0-d6ea2519dcd4'
                     },
                     {
-                        img: 'https://workle.ru/storage/37/8e/79/c6/d8/fb/0d/ac/4a4e-8250a6-74fd46.png',
+                        img: 'https://workle.ru/storage/7e/ff/97/a1/94/f2/fd/b6/4381-b4091d-ff8d5d.png',
                         title: 'Страница-визитка',
                         text1: 'У каждого пользователя Workle есть страница-визитка в интернете и прямые ссылки для работы с клиентами.',
                         text2: 'Информация из профиля будет отображаться на них автоматически. Советуем проверить внесенные данные в настройках.',
@@ -466,7 +465,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/3fc5227c-5618-4dc4-bff3-3aa62f3a4819'
                     },
                     {
-                        img: 'https://workle.ru/storage/00/7c/15/ac/c7/37/06/b0/4571-cc234e-995435.png',
+                        img: 'https://workle.ru/storage/2b/93/59/e2/a0/b6/c6/a6/4dc3-1cf1e9-c9ac36.png',
                         title: 'Счет',
                         text1: 'Это виртуальный кошелек, куда по итогам работы начисляется вознаграждение. Вы еще ничего не заработали, но скоро сможете вывести первые деньги.',
                         text2: '',
@@ -475,7 +474,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/ee64db5d-0c40-4de0-a127-0972bcf5769b'
                     },
                     {
-                        img: 'https://workle.ru/storage/58/d9/5c/b9/f1/5c/67/b3/44db-b37b89-c51abc.png',
+                        img: 'https://workle.ru/storage/a6/a3/0a/15/54/73/23/95/4c93-01aec5-8da111.png',
                         title: 'Каталог',
                         text1: 'Для удобства все услуги сгруппированы по новизне или по профессиям. Нажмите на тип продукта для быстрого перехода на страницу с предложениями.',
                         text2: '',
@@ -484,7 +483,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/63c21258-9796-42d0-b27c-b25cca6076ba'
                     },
                     {
-                        img: 'https://workle.ru/storage/ae/50/ae/6a/5e/56/a3/a0/4de2-ecc17e-dfe2d9.png',
+                        img: 'https://workle.ru/storage/5c/08/d2/db/bd/ba/7c/b1/4514-205afe-58c559.png',
                         title: 'Партнеры',
                         text1: 'Познакомьтесь с компаниями-партнерами и размером вознаграждения. Страница находится во вкладке «Мой офис».',
                         text2: '',
@@ -493,7 +492,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/2745d05d-4d21-4598-a00b-72e171395d48'
                     },
                     {
-                        img: 'https://workle.ru/storage/9a/ab/ee/3d/92/07/35/8c/4464-1d93ae-d8e30c.png',
+                        img: 'https://workle.ru/storage/67/ec/40/ac/34/86/3b/8d/4b05-2183f3-fd60aa.png',
                         title: 'Заявки',
                         text1: 'На этой странице хранится информация об отправленных вами заявках: номер ID, продукт, статус, дата, доход. Следить за всеми этапами сделки вы будете именно здесь. «Заявки» находятся во вкладке «Мой офис».',
                         text2: '',
@@ -502,7 +501,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/11099f4a-29fe-45a6-b6d6-abaf88421a3a'
                     },
                     {
-                        img: 'https://workle.ru/storage/94/5f/22/8a/aa/e0/05/a5/4ee7-86fe59-21bf0e.png',
+                        img: 'https://workle.ru/storage/32/f6/3a/30/78/f3/3c/8f/4c94-a1f5d2-6e1d25.png',
                         title: 'Обучение',
                         text1: 'Для новых пользователей, у которых нет опыт работы, мы создали лучшее дистанционное обучение. Оно поможет вам освоить профессию с нуля, обрести уверенность в собственных силах.',
                         text2: '',
@@ -512,7 +511,7 @@ new Vue({
 
                     },
                     {
-                        img: 'https://workle.ru/storage/6d/1e/cc/e7/fd/9c/90/9c/4f4a-9ea479-a14563.png',
+                        img: 'https://workle.ru/storage/69/9d/51/98/37/5d/9f/ac/4c6c-438b80-c36410.png',
                         title: 'Workle-старт',
                         text1: `Вам необязательно проходить все курсы, что начать зарабатывать. Для старта достаточно изучить бесплатные вводные уроки и пройти программу для новичков «Workle-старт». По итогам обучения на ваш счет будет зачислено <strong>10 000 ₽</strong>`,
                         text2: '',
@@ -521,7 +520,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/92777bf8-4bb4-4aab-84af-e1886b0039a3'
                     },
                     {
-                        img: 'https://workle.ru/storage/ec/87/80/2c/cc/22/5f/81/4cd7-1355b7-8513c2.png',
+                        img: 'https://workle.ru/storage/32/15/7d/36/25/e0/c6/85/4c93-ccd2d4-4895fc.png',
                         title: 'Workle TV',
                         text1: `Обучение на сайте не ограничивается учебными курсами. Мы регулярно проводим бесплатные вебинары с партнерами, руководителями направлений, а также тренинги по продажам и поиску клиентов. На странице WorkleTV вы можете следить за расписанием трансляций и смотреть записи эфиров.`,
                         text2: '',
@@ -530,7 +529,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/2865b218-5883-43fa-82f2-88157fc26e70'
                     },
                     {
-                        img: 'https://workle.ru/storage/23/86/92/5c/d3/e8/6f/b8/48d9-043077-8dce78.png',
+                        img: 'https://workle.ru/storage/29/f5/57/bc/b8/09/ca/82/4e22-41faf8-7e5e29.png',
                         title: 'Публикации',
                         text1: 'Новости компании, акции партнеров, истории успехов, материалы по продажам и анонсы вебинаров. «Публикации» находятся во вкладке «Общение».',
                         text2: '',
@@ -539,7 +538,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/1048ef05-533d-4d44-bb61-0ea2b487b236'
                     },
                     {
-                        img: 'https://workle.ru/storage/db/8b/7a/36/a5/b1/51/a8/4f68-47ece1-0dcb68.png',
+                        img: 'https://workle.ru/storage/20/fc/7e/36/50/75/37/8e/47d7-a7383f-570d80.png',
                         title: 'Доска почета',
                         text1: 'Хотите узнать, сколько зарабатывают ваши коллеги, какие услуги они предлагают клиентам? Откройте вкладку «Общение» и посмотрите на доску почета. Как только вы совершите сделку, то сможете найти там себя.',
                         text2: '',
@@ -548,7 +547,7 @@ new Vue({
                         video: 'https://www.workle.ru/file/47919b3c-571a-49da-868e-9ea190f4fa45'
                     },
                     {
-                        img: 'https://workle.ru/storage/7a/4a/97/b1/15/63/de/b6/4112-70057a-7f76b0.png',
+                        img: 'https://workle.ru/storage/a3/aa/b6/6a/4b/95/b6/9e/477a-884e1f-18c462.png',
                         title: 'Помощь',
                         text1: 'Наш виртуальный тур по сайту подходит к концу.  Если остались вопросы, переходите в раздел «Помощь», где собрана справочная информация обо всех инструментах Workle.',
                         text2: 'Для решения любых проблем, связанных с работой на сайте, обратитесь в службу поддержки, отправив свой запрос через <a class="guide__help-link">специальную форму</a>.',
@@ -1159,7 +1158,9 @@ new Vue({
         activeGuideSlide: 0,
         playVideo: false,
         nowTransitionEnd: false,
-        mapClientOpen: false
+        mapClientOpen: false,
+        darken: true
+
     },
     methods: {
         transitionComplete() {
@@ -1265,27 +1266,46 @@ new Vue({
         openPopupVideo() {
             this.section.firstSection.menuVisible = false;
             this.section.quickEntry.popupOpened = true;
+            this.disableScroll()
         },
         closePopupVideo() {
             this.section.firstSection.menuVisible = true;
             this.section.quickEntry.popupOpened = false;
+            this.enableScroll()
         },
         openPopupCold() {
             this.popupSearch.coldNew.opened = true;
             this.section.firstSection.menuVisible = false;
+            this.disableScroll()
         },
         closePopupCold() {
             this.popupSearch.coldNew.opened = false;
             this.section.firstSection.menuVisible = true;
+            this.enableScroll()
         },
         openPopupHot() {
             this.popupSearch.hot.opened = true;
             this.section.firstSection.menuVisible = false;
+            this.disableScroll()
         },
         closePopupHot() {
             this.popupSearch.hot.opened = false;
             this.section.firstSection.menuVisible = true;
+            this.enableScroll()
         },
+        isActiveSection(id) {
+            if (document.getElementById(id).getBoundingClientRect().top <= 100 && document.getElementById(id).getBoundingClientRect().top >= -document.getElementById(id).clientHeight + 300) {
+                return true
+            } else return false
+        },
+        disableScroll() {
+            document.querySelector('body').style.overflow = 'hidden'
+
+        },
+        enableScroll() {
+            document.querySelector('body').style.overflow = ''
+        }
+
     },
     mounted() {
         this.scrollHeight = window.pageYOffset;
@@ -1299,7 +1319,7 @@ new Vue({
         window.addEventListener('DOMContentLoaded', () => {
             this.clientWidth = window.innerWidth;
             const storyCardTitle = document.querySelectorAll('.story-carousel__card--title');
-            const storyCardText = document.querySelectorAll('.story-carousel__card--text')
+            const storyCardText = document.querySelectorAll('.story-carousel__card--text');
             storyCardTitle.forEach((itemTitle, indexTitle) => {
                 if(itemTitle.clientHeight > 50) {
                     storyCardText.forEach((itemText, indexText) => {
@@ -1322,12 +1342,20 @@ new Vue({
             if(window.innerWidth >= 1024) {
 
                 // меню, заголовок, текст, картинка, кнопка
+
+                const menu = document.querySelector('.first-section__menu');
+
+                if(!menu.classList.contains('menuFixed')) {
+                    tween
+                        .staggerFromTo('.first-section__menu div', 0.5, { opacity: 0, y: -150 }, { opacity: 1, y: 0 }, 0.15)
+                }
+
                 tween
-                    .staggerFromTo('.first-section__menu div', 0.5, { opacity: 0, y: -150 }, { opacity: 1, y: 0 }, 0.15)
-                    .fromTo('.first-section__img', 0.5, { x: 2000,  opacity: 0 }, { x: 0, opacity: 1 })
-                    .fromTo('.first-section__title', 0.5, {  y: -300, opacity: 0 }, { y: 0, opacity: 1 })
-                    .fromTo('.first-section__text', 0.5, {  x: -300, opacity: 0 }, { x: 0, opacity: 1 })
-                    .fromTo('.first-section__button', 0.2, {  y: 500, opacity: 0 }, { y: 0, opacity: 1 })
+                        .fromTo('.first-section__img', 0.5, { x: 2000,  opacity: 0 }, { x: 0, opacity: 1 })
+                        .fromTo('.first-section__title', 0.5, {  y: -300, opacity: 0 }, { y: 0, opacity: 1 })
+                        .fromTo('.first-section__text', 0.5, {  x: -300, opacity: 0 }, { x: 0, opacity: 1 })
+                        .fromTo('.first-section__button', 0.2, {  y: 500, opacity: 0 }, { y: 0, opacity: 1 })
+
 
                 // -- end -- //
 
@@ -1392,6 +1420,24 @@ new Vue({
                 // --end-- //
 
 
+                // быстрый вход
+
+                const tweenQuick =  new TimelineMax()
+                    .to('.quick-entry--text__1024', 1,{  })
+
+
+                const sceneQuick = new ScrollMagic.Scene({
+                    triggerElement: '.quick-entry--text__1024',
+                    triggerHook: 0,
+                    duration: 1500
+
+                })
+                    .setTween(tweenQuick)
+                    // .addIndicators()
+                    .setPin('.quick-entry--text__1024')
+                    .addTo(controller);
+
+
                 // гайд
 
                 const guideScrollHeight = document.querySelector('.guide-scroll').clientHeight;
@@ -1442,6 +1488,8 @@ new Vue({
                     }
 
                 })
+
+                // --end-- //
 
             }
         })

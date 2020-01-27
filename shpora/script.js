@@ -1180,14 +1180,14 @@ new Vue({
                 return this.section.now.card1000Open = true;
             }
         },
-        scrollToId(id) {
+        scrollToId(id, speed = 5) {
             document.querySelector('body').style.overflow = 'auto';
             const $target = $('#' + id);
             const targetTopOffset = $target.offset().top;
             const documentOffsetTop = $(document).scrollTop();
-            const speed = Math.abs(targetTopOffset - documentOffsetTop) / 5;
+            const speedCalc = Math.abs(targetTopOffset - documentOffsetTop) / speed;
 
-            this.scrollAnimate(targetTopOffset, speed);
+            this.scrollAnimate(targetTopOffset, speedCalc);
         },
         scrollAnimate(topOffset, speed) {
             $('html, body').animate({scrollTop: topOffset}, speed, 'swing');

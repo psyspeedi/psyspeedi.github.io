@@ -93,7 +93,7 @@
                                     <h3 class="first-section__title" v-else-if="clientWidth >= 480 && clientWidth < 1024">Шпаргалка<br>для новых пользователей</h3>
                                     <h3 class="first-section__title" v-else>Шпаргалка для<br>новых пользователей</h3>
                                     <p class="first-section__text" v-html="section.firstSection.text"></p>
-                                    <button class="first-section__button" @click="scrollToId('first-deal')" v-html="section.firstSection.button.text"></button>
+                                    <button class="first-section__button" @click="scrollToId('first-deal', 1)" v-html="section.firstSection.button.text"></button>
                                     <div class="first-section__img">
                                         <img src="https://workle.ru/storage/e8/a0/9a/80/8c/ec/57/89/4826-df5a2f-cf9a2b.gif" alt="">
                                     </div>

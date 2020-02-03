@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-carousel@0.18.0/dist/vue-carousel.min.js"></script>
+    <link rel="stylesheet" href="fast_product_new.css">
+    <title>DEV-23342</title>
+</head>
+<body>
+<div id="app">
+
+    <transition name="darken">
+        <div class="darken" v-if="this.productImgLink.popupVideoOpened || this.twoButtons.popupOpened || this.productImgLink.popupNewYear.opened"></div>
+    </transition>
+
+    <div class="wrapper">
+        <div class="wrapper-content">
+
+            <link-back
+                    :link="backLink"
+            ></link-back>
+
+            <div class="product-img-link-wrap">
+
+                <product-img
+                        :product="this.productImgLink.imgProduct"
+                        :stock="this.productImgLink.imgStock"
+                ></product-img>
+
+                <product-link
+                    :link-client="this.productImgLink.linkClient"
+                    :link-video="this.productImgLink.linkVideo"
+                    :link-active="this.productImgLink.linkClientActive"
+                    :copy-link="this.copyClientLink"
+                    :video-open="this.openVideoPopup"
+                    :popup-new-year-active="this.productImgLink.popupNewYear.active"
+                    :popup-new-year-open="this.openNewYearPopup"
+                ></product-link>
+
+                <video-popup
+                        :width="this.clientWidth"
+                        :opened="this.productImgLink.popupVideoOpened"
+                        :video="this.productImgLink.linkVideo"
+                        :close="this.closeVideoPopup"
+                ></video-popup>
+
+                <popup-new-year
+                        :popup="this.productImgLink.popupNewYear"
+                        :close="this.closeNewYearPopup"
+                ></popup-new-year>
+
+            </div>
+
+            <div class="product-main-info-wrap">
+
+                <product-main-info
+                        :info="this.productMainInfo"
+                ></product-main-info>
+
+                <product-level-info
+                        :toggle="this.toggleMoreInfoMobile"
+                        :info="this.productLevelInfo"
+                ></product-level-info>
+
+                <two-buttons
+                        :link="this.twoButtons"
+                        :open="this.openClientPopup"
+                        :close="this.closeClientPopup"
+                        :copy="this.copyClientLinkPopup"
+                ></two-buttons>
+
+            </div>
+
+            <div class="product-carousel-wrap">
+                <h3 class="product-carousel--title">Похожие продукты</h3>
+                <product-carousel
+                        :product="this.productCarousel"
+                ></product-carousel>
+            </div>
+
+            <slider-menu
+                    :down="this.dragAndDropMenu"
+            ></slider-menu>
+
+            <workle-footer
+                    :year="this.footer.year"
+            ></workle-footer>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="fast_product_new.js"></script>
+</body>
+</html>

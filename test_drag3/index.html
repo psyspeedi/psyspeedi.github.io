@@ -75,16 +75,34 @@
 
             </div>
 
+            <div class="section">
+                <slider-menu
+                        :down="this.dragAndDropMenu"
+                        :section="this.sectionMenu"
+                        :left="this.leftMenuPosition"
+                        :max-left="this.leftMenuMaxPosition"
+                ></slider-menu>
+
+                <div class="section-button-links-wrap">
+                    <two-buttons
+                            :link="this.twoButtons"
+                            :open="this.openClientPopup"
+                            :close="this.closeClientPopup"
+                            :copy="this.copyClientLinkPopup"
+                    ></two-buttons>
+                    <link-for-client
+                            :link-active="this.productImgLink.linkClientActive"
+                            :copy-link="this.copyClientLink"
+                    ></link-for-client>
+                </div>
+            </div>
+
             <div class="product-carousel-wrap">
                 <h3 class="product-carousel--title">Похожие продукты</h3>
                 <product-carousel
                         :product="this.productCarousel"
                 ></product-carousel>
             </div>
-
-            <slider-menu
-                    :down="this.dragAndDropMenu"
-            ></slider-menu>
 
             <workle-footer
                     :year="this.footer.year"

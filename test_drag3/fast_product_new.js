@@ -66,6 +66,24 @@ Vue.component('product-link', {
     `
 });
 
+Vue.component('LinkForClient', {
+   props: ['linkActive', 'copyLink'],
+   template: `
+        <div class="product-link-client link-wrap">
+            <div @click="copyLink" class="product-link-pointer">
+                <div class="product-link-client-svg_wrap svg-wrap-grey">
+                    <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.51388 5.50212C4.31058 4.70541 5.70007 4.70541 6.49677 5.50212L6.99392 5.99927L7.98822 5.00497L7.49107 4.50782C6.82797 3.84402 5.94478 3.47766 5.00533 3.47766C4.06588 3.47766 3.18268 3.84402 2.51958 4.50782L1.02744 5.99927C0.369466 6.65935 0 7.55335 0 8.48536C0 9.41737 0.369466 10.3114 1.02744 10.9715C1.35362 11.2981 1.74114 11.5571 2.16773 11.7335C2.59431 11.9099 3.05155 12.0003 3.51318 11.9995C3.97493 12.0005 4.43231 11.9101 4.85903 11.7337C5.28575 11.5573 5.67338 11.2982 5.99962 10.9715L6.49677 10.4743L5.50247 9.48001L5.00533 9.97716C4.60906 10.3716 4.07268 10.5931 3.51353 10.5931C2.95438 10.5931 2.418 10.3716 2.02173 9.97716C1.6269 9.58107 1.40519 9.04462 1.40519 8.48536C1.40519 7.9261 1.6269 7.38964 2.02173 6.99356L3.51388 5.50212Z"/>
+                        <path d="M6.00031 1.02802L5.50316 1.52516L6.49746 2.51946L6.99461 2.02231C7.39087 1.62782 7.92726 1.40635 8.48641 1.40635C9.04555 1.40635 9.58194 1.62782 9.9782 2.02231C10.373 2.41839 10.5947 2.95485 10.5947 3.51411C10.5947 4.07337 10.373 4.60982 9.9782 5.00591L8.48605 6.49735C7.68935 7.29405 6.29987 7.29405 5.50316 6.49735L5.00602 6.0002L4.01172 6.9945L4.50887 7.49165C5.17197 8.15545 6.05516 8.52181 6.99461 8.52181C7.93406 8.52181 8.81725 8.15545 9.48035 7.49165L10.9725 6.0002C11.6305 5.34012 11.9999 4.44612 11.9999 3.51411C11.9999 2.5821 11.6305 1.6881 10.9725 1.02802C10.3126 0.369703 9.41853 0 8.48641 0C7.55428 0 6.66022 0.369703 6.00031 1.02802Z"/>
+                    </svg>            
+                </div>
+                <span>Ссылка для клиента</span>
+                <i v-if="linkActive" class="product-link-client-copy"><span>Скопировано</span></i>
+            </div>
+        </div>
+   `
+});
+
 Vue.component('video-popup', {
     props: ['width', 'opened', 'close', 'video'],
     template: `
@@ -260,29 +278,15 @@ Vue.component('workle-footer', {
 });
 
 Vue.component('slider-menu', {
-    props: ['down'],
-    components: {
-        'carousel': VueCarousel.Carousel,
-        'slide': VueCarousel.Slide
-    },
-    template: `
-        
-        <div class="menu-carousel" @mousedown="down" @touchstart="down">
-            <div class="menu-drag">
-            
-                <div class="menu-slide">Условия</div>
-
-                <div class="menu-slide">Как искать клиента</div>
-    
-                <div class="menu-slide">Тариф</div>
-    
-                <div class="menu-slide">Виды трафика</div>
-    
-                <div class="menu-slide">FAQ</div>
-                
-            </div>      
+    props: ['down', 'section', 'left', 'maxLeft'],
+    template: `    
+        <div class="menu-carousel"  :class="{ 'right-arrow' : left == 0, 'two-arrows' : left < 0 && left != maxLeft, 'left-arrow' : left == maxLeft }" @touchstart="down">
+            <div class="menu-drag-wrap">
+                <div class="menu-drag">
+                    <div class="menu-slide" :key="index" :class="{ active : item.opened }" v-for="(item, index) in section">{{ item.title }}</div> 
+                </div>   
+            </div> 
         </div>
-
     `
 });
 
@@ -391,6 +395,33 @@ new Vue({
             popupOpened: false,
             linkForClientCopy: false
         },
+        sectionMenu: [
+            {
+                title: 'Условия',
+                opened: false,
+            },
+
+            {
+                title: 'Как искать клиента',
+                opened: false
+            },
+
+            {
+                title: 'Тариф',
+                opened: false
+            },
+
+            {
+                title: 'Виды трафика',
+                opened: false
+            },
+
+            {
+                title: 'FAQ',
+                opened: false
+            },
+
+        ],
         productCarousel: [
             {
                 img: '/assets/1.png',
@@ -409,6 +440,8 @@ new Vue({
             year: null,
         },
         clientWidth: null,
+        leftMenuPosition: 0,
+        leftMenuMaxPosition: -250
 
     },
     methods: {
@@ -480,61 +513,32 @@ new Vue({
                 })
             }
         },
-
         dragAndDropMenu(e) {
             const menu = document.querySelector('.menu-drag')
 
+            let event = e;
+            let leftEnd = null;
+            let leftStart = parseInt((getComputedStyle(menu).left), 10);
 
+            document.ontouchmove = e => {
+                if (event) {
+                    leftEnd = parseInt((getComputedStyle(menu).left), 10)
+                    let translate = (e.touches[0].pageX - event.touches[0].pageX)
+                    this.leftMenuPosition = leftStart - translate
 
-            // document.body.appendChild(menu);
-            moveAt(e);
+                    if (this.leftMenuPosition > 0) {
+                        this.leftMenuPosition = 0
+                    } else if (this.leftMenuPosition < this.leftMenuMaxPosition - 1) {
+                        this.leftMenuPosition = this.leftMenuMaxPosition
+                    }
 
-            // menu.style.zIndex = 1000; // над другими элементами
-
-            function moveAt(e) {
-                let translate = e.pageX || e.changedTouches[0].pageX;
-                console.log(translate)
-                if (translate >= 0  && translate <= 250) {
-                    menu.style.transform = 'translateX(' + -translate + 'px)';
+                    menu.style.left = this.leftMenuPosition + 'px';
                 }
-
-                // menu.style.left = e.pageX + 'px'
-
-            }
-
-            document.onmousemove = function(e) {
-                moveAt(e);
             };
-            document.ontouchmove = function(e) {
-                moveAt(e)
+            document.ontouchend = () => {
+                event = null;
+                leftStart = leftEnd
             };
-
-            document.onmouseup = function() {
-                document.onmousemove = null;
-                // menu.style.transform = 'translateX(' + 10 + 'px)';
-                menu.onmouseup = null;
-
-            };
-
-            document.ontouchstart = function() {
-                document.ontouchmove = null;
-                // menu.style.transform = 'translateX(' + 10 + 'px)';
-                menu.ontouchend = null;
-
-            };
-
-            menu.ondragstart = function() {
-                return false;
-            };
-
-            // function getCoords(elem) {   // кроме IE8-
-            //     var box = elem.getBoundingClientRect();
-            //     return {
-            //         top: box.top + pageYOffset,
-            //         left: box.left + pageXOffset
-            //     };
-            // }
-
 
         },
 

@@ -267,7 +267,7 @@ Vue.component('slider-menu', {
     },
     template: `
         
-        <div class="menu-carousel" @mousedown="down">
+        <div class="menu-carousel" @mousedown="down" @touchstart="down">
             <div class="menu-drag">
             
                 <div class="menu-slide">Условия</div>
@@ -492,7 +492,7 @@ new Vue({
             // menu.style.zIndex = 1000; // над другими элементами
 
             function moveAt(e) {
-                let translate = e.pageX;
+                let translate = e.pageX || e.changedTouches[0].pageX;
                 console.log(translate)
                 if (translate >= 0  && translate <= 250) {
                     menu.style.transform = 'translateX(' + -translate + 'px)';
@@ -505,11 +505,21 @@ new Vue({
             document.onmousemove = function(e) {
                 moveAt(e);
             };
+            document.ontouchmove = function(e) {
+                moveAt(e)
+            };
 
             document.onmouseup = function() {
                 document.onmousemove = null;
                 // menu.style.transform = 'translateX(' + 10 + 'px)';
                 menu.onmouseup = null;
+
+            };
+
+            document.ontouchstart = function() {
+                document.ontouchmove = null;
+                // menu.style.transform = 'translateX(' + 10 + 'px)';
+                menu.ontouchend = null;
 
             };
 

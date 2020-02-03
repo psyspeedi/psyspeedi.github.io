@@ -734,7 +734,9 @@ h1, h2, h3, h4, h5, h6, p, span, ul, li, button {
     position: relative;
     overflow: visible;
     height: 200px;
-    /*transform: translateX(calc(-512px + 280px));*/
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 .menu-drag {
     background: transparent;
